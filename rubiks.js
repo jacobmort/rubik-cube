@@ -144,6 +144,63 @@ RubikCube.prototype.rotateFront = function(inverse){
 }
 
 RubikCube.prototype.rotateTop = function(inverse){
+	if (!inverse){
+		var old_front = Array();
+		var old_top = Array();
+		var old_opposite = Array();
+		var old_left = Array();
+		var old_right = Array();
+		old_front[0] = this.f_face[0].slice();
+		old_front[1] = this.f_face[1].slice();
+		old_front[2] = this.f_face[2].slice();
+		
+		old_top[0] = this.t_face[0].slice();
+		old_top[1] = this.t_face[1].slice();
+		old_top[2] = this.t_face[2].slice();
+		
+		old_opposite[0] = this.o_face[0].slice();
+		old_opposite[1] = this.o_face[1].slice();
+		old_opposite[2] = this.o_face[2].slice();
+		
+		old_left[0] = this.l_face[0].slice();
+		old_left[1] = this.l_face[1].slice();
+		old_left[2] = this.l_face[2].slice();
+		
+		old_right[0] = this.r_face[0].slice();
+		old_right[1] = this.r_face[1].slice();
+		old_right[2] = this.r_face[2].slice();
+
+		this.t_face[0][0] =old_top[2][0];
+		this.t_face[0][1] =old_top[1][0];
+		this.t_face[0][2] =old_top[0][0];
+		
+		this.t_face[1][0] =old_top[2][1];
+		/* unchanged this.t_face[1][1] */
+		this.t_face[1][2] =old_top[0][1];
+		
+		this.t_face[2][0] =old_top[2][2];
+		this.t_face[2][1] =old_top[1][2];
+		this.t_face[2][2] =old_top[0][2];
+		
+		this.l_face[0][0] = old_front[0][0];
+		this.l_face[0][1] = old_front[0][1];
+		this.l_face[0][2] = old_front[0][2];
+			
+		this.r_face[0][0] = old_opposite[0][0];
+		this.r_face[0][1] = old_opposite[0][1];
+		this.r_face[0][2] = old_opposite[0][2];
+		
+		this.o_face[0][0] = old_left[0][0];
+		this.o_face[0][1] = old_left[0][1];
+		this.o_face[0][2] = old_left[0][2];
+
+		this.f_face[0][0] = old_right[0][0];
+		this.f_face[0][1] = old_right[0][1];
+		this.f_face[0][2] = old_right[0][2];
+		
+	}else{
+		
+	}
 }
 
 RubikCube.prototype.rotateBottom = function(inverse){
