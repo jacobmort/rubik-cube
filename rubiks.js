@@ -425,7 +425,7 @@ RubikCube.prototype.rotateLeft = function(inverse){
 		var old_bottom = Array();
 		var old_opposite = Array();
 		var old_left = Array();
-		var old_right = Array();
+		var old_top = Array();
 		old_front[0] = this.f_face[0].slice();
 		old_front[1] = this.f_face[1].slice();
 		old_front[2] = this.f_face[2].slice();
@@ -442,37 +442,37 @@ RubikCube.prototype.rotateLeft = function(inverse){
 		old_left[1] = this.l_face[1].slice();
 		old_left[2] = this.l_face[2].slice();
 		
-		old_right[0] = this.r_face[0].slice();
-		old_right[1] = this.r_face[1].slice();
-		old_right[2] = this.r_face[2].slice();
+		old_top[0] = this.t_face[0].slice();
+		old_top[1] = this.t_face[1].slice();
+		old_top[2] = this.t_face[2].slice();
 
-		this.b_face[0][0] =old_bottom[0][2];
-		this.b_face[0][1] =old_bottom[1][2];
-		this.b_face[0][2] =old_bottom[2][2];
+		this.l_face[0][0] =old_left[0][2];
+		this.l_face[0][1] =old_left[1][2];
+		this.l_face[0][2] =old_left[0][2];
 		
-		this.b_face[1][0] =old_bottom[0][1];
-		/* unchanged this.b_face[1][1] */
-		this.b_face[1][2] =old_bottom[2][1];
+		this.l_face[1][0] =old_left[0][1];
+		/* unchanged this.l_face[1][1] */
+		this.l_face[1][2] =old_left[2][1];
 		
-		this.b_face[2][0] =old_bottom[0][0];
-		this.b_face[2][1] =old_bottom[1][0];
-		this.b_face[2][2] =old_bottom[2][0];
+		this.l_face[2][0] =old_left[0][0];
+		this.l_face[2][1] =old_left[1][0];
+		this.l_face[2][2] =old_left[2][0];
 		
-		this.l_face[2][0] = old_front[2][0];
-		this.l_face[2][1] = old_front[2][1];
-		this.l_face[2][2] = old_front[2][2];
+		this.b_face[0][0] = old_opposite[2][2];
+		this.b_face[1][0] = old_opposite[1][2];
+		this.b_face[2][0] = old_opposite[0][2];
 			
-		this.r_face[2][0] = old_opposite[2][0];
-		this.r_face[2][1] = old_opposite[2][1];
-		this.r_face[2][2] = old_opposite[2][2];
+		this.t_face[0][0] = old_front[0][0];
+		this.t_face[1][0] = old_front[1][0];
+		this.t_face[2][0] = old_front[2][0];
 		
-		this.o_face[2][0] = old_left[2][0];
-		this.o_face[2][1] = old_left[2][1];
-		this.o_face[2][2] = old_left[2][2];
+		this.o_face[0][2] = old_top[2][0];
+		this.o_face[1][2] = old_top[1][0];
+		this.o_face[2][2] = old_top[0][0];
 
-		this.f_face[2][0] = old_right[2][0];
-		this.f_face[2][1] = old_right[2][1];
-		this.f_face[2][2] = old_right[2][2];
+		this.f_face[0][0] = old_bottom[0][0];
+		this.f_face[1][0] = old_bottom[1][0];
+		this.f_face[2][0] = old_bottom[2][0];
 	}
 }
 
