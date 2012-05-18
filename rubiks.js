@@ -10,9 +10,9 @@ RubikCube = function(){
 		['w','w','w']
     ];
 	this.b_face = [
-		['g','g','g'],
-		['g','g','g'],
-		['g','g','g']
+		['y','y','y'],
+		['y','y','y'],
+		['y','y','y']
     ];
 	this.r_face = [
 		['o','o','o'],
@@ -23,6 +23,11 @@ RubikCube = function(){
 		['r','r','r'],
 		['r','r','r'],
 		['r','r','r']
+    ];
+	this.o_face = [
+		['g','g','g'],
+		['g','g','g'],
+		['g','g','g']
     ];
 
 };

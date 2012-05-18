@@ -54,6 +54,16 @@ RubikCubeTest.prototype.rotateFrontTest = function(){
 		['t4','t5','t6'],
 		['r3','r6','r9']
     ];
+	cube.o_face = [
+		['r1','r2','r3'],
+		['r4','r5','r6'],
+		['r7','r8','r9']
+    ];
+    var o_solution = [
+		['r1','r2','r3'],
+		['r4','r5','r6'],
+		['r7','r8','r9']
+    ];
     
     cube.rotateFront(false);
     
@@ -82,4 +92,10 @@ RubikCubeTest.prototype.rotateFrontTest = function(){
     && (cube.r_face[2][0] == r_solution[2][0])
 	&& (cube.r_face[2][1] == r_solution[2][1])
     && (cube.r_face[2][2] == r_solution[2][2])
+	&& (cube.o_face[1][0] == o_solution[1][0])
+	&& (cube.o_face[1][1] == o_solution[1][1])
+    && (cube.o_face[1][2] == o_solution[1][2])
+    && (cube.o_face[2][0] == o_solution[2][0])
+	&& (cube.o_face[2][1] == o_solution[2][1])
+    && (cube.o_face[2][2] == o_solution[2][2])
 }
