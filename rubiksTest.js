@@ -7,7 +7,8 @@ RubikCubeTest.prototype.runAll = function(){
 	&& this.rotateTopTest()
 	&& this.rotateTopInverseTest()
 	&& this.rotateBottomTest()
-	&& this.rotateBottomInverseTest();
+	&& this.rotateBottomInverseTest()
+	&& this.rotateLeftTest();
 }
 RubikCubeTest.prototype.rotateFrontTest = function(){
 	cube = new RubikCube();
@@ -244,16 +245,6 @@ RubikCubeTest.prototype.rotateTopTest = function(){
 		['f7','f8','f9']
     ];
 	
-    cube.o_face = [
-		['o1','o2','o3'],
-		['o4','o5','o6'],
-		['o7','o8','o9']
-    ];
-    var o_solution = [
-		['l1','l2','l3'],
-		['o4','o5','o6'],
-		['o7','o8','o9']
-    ];
     cube.r_face = [
 		['r1','r2','r3'],
 		['r4','r5','r6'],
@@ -366,16 +357,6 @@ RubikCubeTest.prototype.rotateTopInverseTest = function(){
 		['f7','f8','f9']
     ];
 	
-    cube.o_face = [
-		['o1','o2','o3'],
-		['o4','o5','o6'],
-		['o7','o8','o9']
-    ];
-    var o_solution = [
-		['r1','r2','r3'],
-		['o4','o5','o6'],
-		['o7','o8','o9']
-    ];
     cube.r_face = [
 		['r1','r2','r3'],
 		['r4','r5','r6'],
@@ -489,16 +470,6 @@ RubikCubeTest.prototype.rotateBottomTest = function(){
 		['l7','l8','l9']
     ];
 	
-    cube.o_face = [
-		['o1','o2','o3'],
-		['o4','o5','o6'],
-		['o7','o8','o9']
-    ];
-    var o_solution = [
-		['o1','o2','o3'],
-		['o4','o5','o6'],
-		['r7','r8','r9']
-    ];
     cube.r_face = [
 		['r1','r2','r3'],
 		['r4','r5','r6'],
@@ -612,16 +583,6 @@ RubikCubeTest.prototype.rotateBottomInverseTest = function(){
 		['r7','r8','r9']
     ];
 	
-    cube.o_face = [
-		['o1','o2','o3'],
-		['o4','o5','o6'],
-		['o7','o8','o9']
-    ];
-    var o_solution = [
-		['o1','o2','o3'],
-		['o4','o5','o6'],
-		['l7','l8','l9']
-    ];
     cube.r_face = [
 		['r1','r2','r3'],
 		['r4','r5','r6'],
@@ -712,6 +673,121 @@ RubikCubeTest.prototype.rotateBottomInverseTest = function(){
     && (cube.t_face[2][0] == t_solution[2][0])
 	&& (cube.t_face[2][1] == t_solution[2][1])
     && (cube.t_face[2][2] == t_solution[2][2])
+	&& (cube.l_face[1][0] == l_solution[1][0])
+	&& (cube.l_face[1][1] == l_solution[1][1])
+    && (cube.l_face[1][2] == l_solution[1][2])
+    && (cube.l_face[2][0] == l_solution[2][0])
+	&& (cube.l_face[2][1] == l_solution[2][1])
+    && (cube.l_face[2][2] == l_solution[2][2])
+	
+}
+
+RubikCubeTest.prototype.rotateLeftTest = function(){
+
+	cube = new RubikCube();
+	cube.f_face = [
+		['f1','f2','f3'],
+		['f4','f5','f6'],
+		['f7','f8','f9']
+    ];
+    var f_solution = [
+		['t1','f2','f3'],
+		['t4','f5','f6'],
+		['t7','f8','f9']
+    ];
+    cube.r_face = [
+		['r1','r2','r3'],
+		['r4','r5','r6'],
+		['r7','r8','r9']
+    ];
+    var r_solution = [
+		['r1','r2','r3'],
+		['r4','r5','r6'],
+		['r7','r8','r9']
+    ];
+    cube.l_face = [
+		['l1','l2','l3'],
+		['l4','l5','l6'],
+		['l7','l8','l9']
+    ];
+    var l_solution = [
+		['l7','l4','l1'],
+		['l8','l5','l2'],
+		['l9','l6','l3']
+    ];
+    cube.t_face = [
+		['t1','t2','t3'],
+		['t4','t5','t6'],
+		['t7','t8','t9']
+    ];
+    var t_solution = [
+		['o9','t2','t3'],
+		['o6','t5','t6'],
+		['o3','t8','t9']
+    ];
+	cube.o_face = [
+		['o1','o2','o3'],
+		['o4','o5','o6'],
+		['o7','o8','o9']
+    ];
+    var o_solution = [
+		['o1','o2','b7'],
+		['o4','o5','b4'],
+		['o7','o8','b1']
+    ];
+	cube.b_face = [
+		['b1','b2','b3'],
+		['b4','b5','b6'],
+		['b7','b8','b9']
+    ];
+    var b_solution = [
+		['f1','b2','b3'],
+		['f4','b5','b6'],
+		['f7','b8','b9']
+    ];
+    
+    cube.rotateLeft(false);
+	
+    return (cube.f_face[0][0] == f_solution[0][0])
+	&& (cube.f_face[0][1] == f_solution[0][1])
+    && (cube.f_face[0][2] == f_solution[0][2])
+    && (cube.f_face[1][0] == f_solution[1][0])
+	&& (cube.f_face[1][1] == f_solution[1][1])
+    && (cube.f_face[1][2] == f_solution[1][2])
+    && (cube.f_face[2][0] == f_solution[2][0])
+	&& (cube.f_face[2][1] == f_solution[2][1])
+    && (cube.f_face[2][2] == f_solution[2][2])
+	
+    && (cube.b_face[0][1] == b_solution[0][1])
+    && (cube.b_face[0][2] == b_solution[0][2])
+    && (cube.b_face[1][0] == b_solution[1][0])
+	&& (cube.b_face[1][1] == b_solution[1][1])
+    && (cube.b_face[1][2] == b_solution[1][2])
+    && (cube.b_face[2][0] == b_solution[2][0])
+	&& (cube.b_face[2][1] == b_solution[2][1])
+    && (cube.b_face[2][2] == b_solution[2][2])
+	&& (cube.r_face[0][1] == r_solution[0][1])
+    && (cube.r_face[0][2] == r_solution[0][2])
+    && (cube.r_face[1][0] == r_solution[1][0])
+	&& (cube.r_face[1][1] == r_solution[1][1])
+    && (cube.r_face[1][2] == r_solution[1][2])
+    && (cube.r_face[2][0] == r_solution[2][0])
+	&& (cube.r_face[2][1] == r_solution[2][1])
+    && (cube.r_face[2][2] == r_solution[2][2])
+	
+	&& (cube.o_face[1][0] == o_solution[1][0])
+	&& (cube.o_face[1][1] == o_solution[1][1])
+    && (cube.o_face[1][2] == o_solution[1][2])
+    && (cube.o_face[2][0] == o_solution[2][0])
+	&& (cube.o_face[2][1] == o_solution[2][1])
+    && (cube.o_face[2][2] == o_solution[2][2])
+	&& (cube.t_face[1][0] == t_solution[1][0])
+	&& (cube.t_face[1][1] == t_solution[1][1])
+    && (cube.t_face[1][2] == t_solution[1][2])
+    && (cube.t_face[2][0] == t_solution[2][0])
+	&& (cube.t_face[2][1] == t_solution[2][1])
+    && (cube.t_face[2][2] == t_solution[2][2])
+	
 	&& (cube.l_face[1][0] == l_solution[1][0])
 	&& (cube.l_face[1][1] == l_solution[1][1])
     && (cube.l_face[1][2] == l_solution[1][2])
