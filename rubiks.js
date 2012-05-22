@@ -680,21 +680,21 @@ RubikCube.prototype.rotateOpposite = function(inverse){
 		this.o_face[2][1] =old_opposite[1][0];
 		this.o_face[2][2] =old_opposite[2][0];
 		
-		this.t_face[2][0] = old_right[0][0];
-		this.t_face[2][1] = old_right[1][0];
-		this.t_face[2][2] = old_right[2][0];
+		this.t_face[0][0] = old_left[0][0];
+		this.t_face[0][1] = old_left[1][0];
+		this.t_face[0][2] = old_left[2][0];
 
-		this.b_face[0][0] = old_left[0][2];
-		this.b_face[0][1] = old_left[1][2];
-		this.b_face[0][2] = old_left[2][2];
+		this.b_face[2][0] = old_right[2][2];
+		this.b_face[2][1] = old_right[1][2];
+		this.b_face[2][2] = old_right[0][2];
 
-		this.l_face[0][2] = old_top[2][2];
-		this.l_face[1][2] = old_top[2][1];
-		this.l_face[2][2] = old_top[2][0];
+		this.l_face[0][0] = old_bottom[2][0];
+		this.l_face[1][0] = old_bottom[2][1];
+		this.l_face[2][0] = old_bottom[2][2];
 		
-		this.r_face[0][0] = old_bottom[0][2];
-		this.r_face[1][0] = old_bottom[0][1];
-		this.r_face[2][0] = old_bottom[0][0];
+		this.r_face[0][2] = old_top[0][0];
+		this.r_face[1][2] = old_top[0][1];
+		this.r_face[2][2] = old_top[0][2];
 	}
 }
 
