@@ -1,700 +1,700 @@
 RubikCube = function(){
-	this.f_face = [
-		['b','b','b'],
-		['b','b','b'],
-		['b','b','b']
-    ];
-	this.t_face = [
-		['w','w','w'],
-		['w','w','w'],
-		['w','w','w']
-    ];
-	this.b_face = [
-		['y','y','y'],
-		['y','y','y'],
-		['y','y','y']
-    ];
-	this.r_face = [
+	this.orange_face = [
 		['o','o','o'],
 		['o','o','o'],
 		['o','o','o']
     ];
-	this.l_face = [
-		['r','r','r'],
-		['r','r','r'],
-		['r','r','r']
+	this.blue_face = [
+		['b','b','b'],
+		['b','b','b'],
+		['b','b','b']
     ];
-	this.o_face = [
+	this.green_face = [
 		['g','g','g'],
 		['g','g','g'],
 		['g','g','g']
     ];
+	this.white_face = [
+		['w','w','w'],
+		['w','w','w'],
+		['w','w','w']
+    ];
+	this.yellow_face = [
+		['y','y','y'],
+		['y','y','y'],
+		['y','y','y']
+    ];
+	this.red_face = [
+		['r','r','r'],
+		['r','r','r'],
+		['r','r','r']
+    ];
 
 };
 
-RubikCube.prototype.rotateFront = function(inverse){
+RubikCube.prototype.rotateOrange = function(inverse){
 	if (!inverse){
-		var old_front = Array();
-		var old_top = Array();
-		var old_bottom = Array();
-		var old_left = Array();
-		var old_right = Array();
-		old_front[0] = this.f_face[0].slice();
-		old_front[1] = this.f_face[1].slice();
-		old_front[2] = this.f_face[2].slice();
+		var old_orange = Array();
+		var old_blue = Array();
+		var old_green = Array();
+		var old_yellow = Array();
+		var old_white = Array();
+		old_orange[0] = this.orange_face[0].slice();
+		old_orange[1] = this.orange_face[1].slice();
+		old_orange[2] = this.orange_face[2].slice();
 		
-		old_top[0] = this.t_face[0].slice();
-		old_top[1] = this.t_face[1].slice();
-		old_top[2] = this.t_face[2].slice();
+		old_blue[0] = this.blue_face[0].slice();
+		old_blue[1] = this.blue_face[1].slice();
+		old_blue[2] = this.blue_face[2].slice();
 		
-		old_bottom[0] = this.b_face[0].slice();
-		old_bottom[1] = this.b_face[1].slice();
-		old_bottom[2] = this.b_face[2].slice();
+		old_green[0] = this.green_face[0].slice();
+		old_green[1] = this.green_face[1].slice();
+		old_green[2] = this.green_face[2].slice();
 		
-		old_left[0] = this.l_face[0].slice();
-		old_left[1] = this.l_face[1].slice();
-		old_left[2] = this.l_face[2].slice();
+		old_yellow[0] = this.yellow_face[0].slice();
+		old_yellow[1] = this.yellow_face[1].slice();
+		old_yellow[2] = this.yellow_face[2].slice();
 		
-		old_right[0] = this.r_face[0].slice();
-		old_right[1] = this.r_face[1].slice();
-		old_right[2] = this.r_face[2].slice();
+		old_white[0] = this.white_face[0].slice();
+		old_white[1] = this.white_face[1].slice();
+		old_white[2] = this.white_face[2].slice();
 
-		this.f_face[0][0] =old_front[2][0];
-		this.f_face[0][1] =old_front[1][0];
-		this.f_face[0][2] =old_front[0][0];
+		this.orange_face[0][0] =old_orange[2][0];
+		this.orange_face[0][1] =old_orange[1][0];
+		this.orange_face[0][2] =old_orange[0][0];
 		
-		this.f_face[1][0] =old_front[2][1];
-		/* unchanged this.f_face[1][1] */
-		this.f_face[1][2] =old_front[0][1];
+		this.orange_face[1][0] =old_orange[2][1];
+		/* unchanged this.orange_face[1][1] */
+		this.orange_face[1][2] =old_orange[0][1];
 		
-		this.f_face[2][0] =old_front[2][2];
-		this.f_face[2][1] =old_front[1][2];
-		this.f_face[2][2] =old_front[0][2];
+		this.orange_face[2][0] =old_orange[2][2];
+		this.orange_face[2][1] =old_orange[1][2];
+		this.orange_face[2][2] =old_orange[0][2];
 		
-		this.t_face[2][0] = old_left[2][2];
-		this.t_face[2][1] = old_left[1][2];
-		this.t_face[2][2] = old_left[0][2];
+		this.blue_face[2][0] = old_yellow[2][2];
+		this.blue_face[2][1] = old_yellow[1][2];
+		this.blue_face[2][2] = old_yellow[0][2];
 
-		this.b_face[0][0] = old_right[2][0];
-		this.b_face[0][1] = old_right[1][0];
-		this.b_face[0][2] = old_right[0][0];
+		this.green_face[0][0] = old_white[2][0];
+		this.green_face[0][1] = old_white[1][0];
+		this.green_face[0][2] = old_white[0][0];
 
-		this.l_face[0][2] = old_bottom[0][0];
-		this.l_face[1][2] = old_bottom[0][1];
-		this.l_face[2][2] = old_bottom[0][2];
+		this.yellow_face[0][2] = old_green[0][0];
+		this.yellow_face[1][2] = old_green[0][1];
+		this.yellow_face[2][2] = old_green[0][2];
 		
-		this.r_face[0][0] = old_top[2][0];
-		this.r_face[1][0] = old_top[2][1];
-		this.r_face[2][0] = old_top[2][2];
+		this.white_face[0][0] = old_blue[2][0];
+		this.white_face[1][0] = old_blue[2][1];
+		this.white_face[2][0] = old_blue[2][2];
 		
 	}else{
-		var old_front = Array();
-		var old_top = Array();
-		var old_bottom = Array();
-		var old_left = Array();
-		var old_right = Array();
-		old_front[0] = this.f_face[0].slice();
-		old_front[1] = this.f_face[1].slice();
-		old_front[2] = this.f_face[2].slice();
+		var old_orange = Array();
+		var old_blue = Array();
+		var old_green = Array();
+		var old_yellow = Array();
+		var old_white = Array();
+		old_orange[0] = this.orange_face[0].slice();
+		old_orange[1] = this.orange_face[1].slice();
+		old_orange[2] = this.orange_face[2].slice();
 		
-		old_top[0] = this.t_face[0].slice();
-		old_top[1] = this.t_face[1].slice();
-		old_top[2] = this.t_face[2].slice();
+		old_blue[0] = this.blue_face[0].slice();
+		old_blue[1] = this.blue_face[1].slice();
+		old_blue[2] = this.blue_face[2].slice();
 		
-		old_bottom[0] = this.b_face[0].slice();
-		old_bottom[1] = this.b_face[1].slice();
-		old_bottom[2] = this.b_face[2].slice();
+		old_green[0] = this.green_face[0].slice();
+		old_green[1] = this.green_face[1].slice();
+		old_green[2] = this.green_face[2].slice();
 		
-		old_left[0] = this.l_face[0].slice();
-		old_left[1] = this.l_face[1].slice();
-		old_left[2] = this.l_face[2].slice();
+		old_yellow[0] = this.yellow_face[0].slice();
+		old_yellow[1] = this.yellow_face[1].slice();
+		old_yellow[2] = this.yellow_face[2].slice();
 		
-		old_right[0] = this.r_face[0].slice();
-		old_right[1] = this.r_face[1].slice();
-		old_right[2] = this.r_face[2].slice();
+		old_white[0] = this.white_face[0].slice();
+		old_white[1] = this.white_face[1].slice();
+		old_white[2] = this.white_face[2].slice();
 
-		this.f_face[0][0] =old_front[0][2];
-		this.f_face[0][1] =old_front[1][2];
-		this.f_face[0][2] =old_front[2][2];
+		this.orange_face[0][0] =old_orange[0][2];
+		this.orange_face[0][1] =old_orange[1][2];
+		this.orange_face[0][2] =old_orange[2][2];
 		
-		this.f_face[1][0] =old_front[0][1];
-		/* unchanged this.f_face[1][1] */
-		this.f_face[1][2] =old_front[2][1];
+		this.orange_face[1][0] =old_orange[0][1];
+		/* unchanged this.orange_face[1][1] */
+		this.orange_face[1][2] =old_orange[2][1];
 		
-		this.f_face[2][0] =old_front[0][0];
-		this.f_face[2][1] =old_front[1][0];
-		this.f_face[2][2] =old_front[2][0];
+		this.orange_face[2][0] =old_orange[0][0];
+		this.orange_face[2][1] =old_orange[1][0];
+		this.orange_face[2][2] =old_orange[2][0];
 		
-		this.t_face[2][0] = old_right[0][0];
-		this.t_face[2][1] = old_right[1][0];
-		this.t_face[2][2] = old_right[2][0];
+		this.blue_face[2][0] = old_white[0][0];
+		this.blue_face[2][1] = old_white[1][0];
+		this.blue_face[2][2] = old_white[2][0];
 
-		this.b_face[0][0] = old_left[0][2];
-		this.b_face[0][1] = old_left[1][2];
-		this.b_face[0][2] = old_left[2][2];
+		this.green_face[0][0] = old_yellow[0][2];
+		this.green_face[0][1] = old_yellow[1][2];
+		this.green_face[0][2] = old_yellow[2][2];
 
-		this.l_face[0][2] = old_top[2][2];
-		this.l_face[1][2] = old_top[2][1];
-		this.l_face[2][2] = old_top[2][0];
+		this.yellow_face[0][2] = old_blue[2][2];
+		this.yellow_face[1][2] = old_blue[2][1];
+		this.yellow_face[2][2] = old_blue[2][0];
 		
-		this.r_face[0][0] = old_bottom[0][2];
-		this.r_face[1][0] = old_bottom[0][1];
-		this.r_face[2][0] = old_bottom[0][0];
+		this.white_face[0][0] = old_green[0][2];
+		this.white_face[1][0] = old_green[0][1];
+		this.white_face[2][0] = old_green[0][0];
 	}
 }
 
-RubikCube.prototype.rotateTop = function(inverse){
+RubikCube.prototype.rotateBlue = function(inverse){
 	if (!inverse){
-		var old_front = Array();
-		var old_top = Array();
+		var old_orange = Array();
+		var old_blue = Array();
 		var old_opposite = Array();
-		var old_left = Array();
-		var old_right = Array();
-		old_front[0] = this.f_face[0].slice();
-		old_front[1] = this.f_face[1].slice();
-		old_front[2] = this.f_face[2].slice();
+		var old_yellow = Array();
+		var old_white = Array();
+		old_orange[0] = this.orange_face[0].slice();
+		old_orange[1] = this.orange_face[1].slice();
+		old_orange[2] = this.orange_face[2].slice();
 		
-		old_top[0] = this.t_face[0].slice();
-		old_top[1] = this.t_face[1].slice();
-		old_top[2] = this.t_face[2].slice();
+		old_blue[0] = this.blue_face[0].slice();
+		old_blue[1] = this.blue_face[1].slice();
+		old_blue[2] = this.blue_face[2].slice();
 		
-		old_opposite[0] = this.o_face[0].slice();
-		old_opposite[1] = this.o_face[1].slice();
-		old_opposite[2] = this.o_face[2].slice();
+		old_opposite[0] = this.red_face[0].slice();
+		old_opposite[1] = this.red_face[1].slice();
+		old_opposite[2] = this.red_face[2].slice();
 		
-		old_left[0] = this.l_face[0].slice();
-		old_left[1] = this.l_face[1].slice();
-		old_left[2] = this.l_face[2].slice();
+		old_yellow[0] = this.yellow_face[0].slice();
+		old_yellow[1] = this.yellow_face[1].slice();
+		old_yellow[2] = this.yellow_face[2].slice();
 		
-		old_right[0] = this.r_face[0].slice();
-		old_right[1] = this.r_face[1].slice();
-		old_right[2] = this.r_face[2].slice();
+		old_white[0] = this.white_face[0].slice();
+		old_white[1] = this.white_face[1].slice();
+		old_white[2] = this.white_face[2].slice();
 
-		this.t_face[0][0] =old_top[2][0];
-		this.t_face[0][1] =old_top[1][0];
-		this.t_face[0][2] =old_top[0][0];
+		this.blue_face[0][0] =old_blue[2][0];
+		this.blue_face[0][1] =old_blue[1][0];
+		this.blue_face[0][2] =old_blue[0][0];
 		
-		this.t_face[1][0] =old_top[2][1];
-		/* unchanged this.t_face[1][1] */
-		this.t_face[1][2] =old_top[0][1];
+		this.blue_face[1][0] =old_blue[2][1];
+		/* unchanged this.blue_face[1][1] */
+		this.blue_face[1][2] =old_blue[0][1];
 		
-		this.t_face[2][0] =old_top[2][2];
-		this.t_face[2][1] =old_top[1][2];
-		this.t_face[2][2] =old_top[0][2];
+		this.blue_face[2][0] =old_blue[2][2];
+		this.blue_face[2][1] =old_blue[1][2];
+		this.blue_face[2][2] =old_blue[0][2];
 		
-		this.l_face[0][0] = old_front[0][0];
-		this.l_face[0][1] = old_front[0][1];
-		this.l_face[0][2] = old_front[0][2];
+		this.yellow_face[0][0] = old_orange[0][0];
+		this.yellow_face[0][1] = old_orange[0][1];
+		this.yellow_face[0][2] = old_orange[0][2];
 			
-		this.r_face[0][0] = old_opposite[0][0];
-		this.r_face[0][1] = old_opposite[0][1];
-		this.r_face[0][2] = old_opposite[0][2];
+		this.white_face[0][0] = old_opposite[0][0];
+		this.white_face[0][1] = old_opposite[0][1];
+		this.white_face[0][2] = old_opposite[0][2];
 		
-		this.o_face[0][0] = old_left[0][0];
-		this.o_face[0][1] = old_left[0][1];
-		this.o_face[0][2] = old_left[0][2];
+		this.red_face[0][0] = old_yellow[0][0];
+		this.red_face[0][1] = old_yellow[0][1];
+		this.red_face[0][2] = old_yellow[0][2];
 
-		this.f_face[0][0] = old_right[0][0];
-		this.f_face[0][1] = old_right[0][1];
-		this.f_face[0][2] = old_right[0][2];
+		this.orange_face[0][0] = old_white[0][0];
+		this.orange_face[0][1] = old_white[0][1];
+		this.orange_face[0][2] = old_white[0][2];
 		
 	}else{
-		var old_front = Array();
-		var old_top = Array();
+		var old_orange = Array();
+		var old_blue = Array();
 		var old_opposite = Array();
-		var old_left = Array();
-		var old_right = Array();
-		old_front[0] = this.f_face[0].slice();
-		old_front[1] = this.f_face[1].slice();
-		old_front[2] = this.f_face[2].slice();
+		var old_yellow = Array();
+		var old_white = Array();
+		old_orange[0] = this.orange_face[0].slice();
+		old_orange[1] = this.orange_face[1].slice();
+		old_orange[2] = this.orange_face[2].slice();
 		
-		old_top[0] = this.t_face[0].slice();
-		old_top[1] = this.t_face[1].slice();
-		old_top[2] = this.t_face[2].slice();
+		old_blue[0] = this.blue_face[0].slice();
+		old_blue[1] = this.blue_face[1].slice();
+		old_blue[2] = this.blue_face[2].slice();
 		
-		old_opposite[0] = this.o_face[0].slice();
-		old_opposite[1] = this.o_face[1].slice();
-		old_opposite[2] = this.o_face[2].slice();
+		old_opposite[0] = this.red_face[0].slice();
+		old_opposite[1] = this.red_face[1].slice();
+		old_opposite[2] = this.red_face[2].slice();
 		
-		old_left[0] = this.l_face[0].slice();
-		old_left[1] = this.l_face[1].slice();
-		old_left[2] = this.l_face[2].slice();
+		old_yellow[0] = this.yellow_face[0].slice();
+		old_yellow[1] = this.yellow_face[1].slice();
+		old_yellow[2] = this.yellow_face[2].slice();
 		
-		old_right[0] = this.r_face[0].slice();
-		old_right[1] = this.r_face[1].slice();
-		old_right[2] = this.r_face[2].slice();
+		old_white[0] = this.white_face[0].slice();
+		old_white[1] = this.white_face[1].slice();
+		old_white[2] = this.white_face[2].slice();
 
-		this.t_face[0][0] =old_top[0][2];
-		this.t_face[0][1] =old_top[1][2];
-		this.t_face[0][2] =old_top[2][2];
+		this.blue_face[0][0] =old_blue[0][2];
+		this.blue_face[0][1] =old_blue[1][2];
+		this.blue_face[0][2] =old_blue[2][2];
 		
-		this.t_face[1][0] =old_top[0][1];
-		/* unchanged this.t_face[1][1] */
-		this.t_face[1][2] =old_top[2][1];
+		this.blue_face[1][0] =old_blue[0][1];
+		/* unchanged this.blue_face[1][1] */
+		this.blue_face[1][2] =old_blue[2][1];
 		
-		this.t_face[2][0] =old_top[0][0];
-		this.t_face[2][1] =old_top[1][0];
-		this.t_face[2][2] =old_top[2][0];
+		this.blue_face[2][0] =old_blue[0][0];
+		this.blue_face[2][1] =old_blue[1][0];
+		this.blue_face[2][2] =old_blue[2][0];
 		
-		this.l_face[0][0] = old_opposite[0][0];
-		this.l_face[0][1] = old_opposite[0][1];
-		this.l_face[0][2] = old_opposite[0][2];
+		this.yellow_face[0][0] = old_opposite[0][0];
+		this.yellow_face[0][1] = old_opposite[0][1];
+		this.yellow_face[0][2] = old_opposite[0][2];
 			
-		this.r_face[0][0] = old_front[0][0];
-		this.r_face[0][1] = old_front[0][1];
-		this.r_face[0][2] = old_front[0][2];
+		this.white_face[0][0] = old_orange[0][0];
+		this.white_face[0][1] = old_orange[0][1];
+		this.white_face[0][2] = old_orange[0][2];
 		
-		this.o_face[0][0] = old_right[0][0];
-		this.o_face[0][1] = old_right[0][1];
-		this.o_face[0][2] = old_right[0][2];
+		this.red_face[0][0] = old_white[0][0];
+		this.red_face[0][1] = old_white[0][1];
+		this.red_face[0][2] = old_white[0][2];
 
-		this.f_face[0][0] = old_left[0][0];
-		this.f_face[0][1] = old_left[0][1];
-		this.f_face[0][2] = old_left[0][2];
+		this.orange_face[0][0] = old_yellow[0][0];
+		this.orange_face[0][1] = old_yellow[0][1];
+		this.orange_face[0][2] = old_yellow[0][2];
 	}
 }
 
-RubikCube.prototype.rotateBottom = function(inverse){
+RubikCube.prototype.rotateGreen = function(inverse){
 	if (!inverse){
-		var old_front = Array();
-		var old_bottom = Array();
+		var old_orange = Array();
+		var old_green = Array();
 		var old_opposite = Array();
-		var old_left = Array();
-		var old_right = Array();
-		old_front[0] = this.f_face[0].slice();
-		old_front[1] = this.f_face[1].slice();
-		old_front[2] = this.f_face[2].slice();
+		var old_yellow = Array();
+		var old_white = Array();
+		old_orange[0] = this.orange_face[0].slice();
+		old_orange[1] = this.orange_face[1].slice();
+		old_orange[2] = this.orange_face[2].slice();
 		
-		old_bottom[0] = this.b_face[0].slice();
-		old_bottom[1] = this.b_face[1].slice();
-		old_bottom[2] = this.b_face[2].slice();
+		old_green[0] = this.green_face[0].slice();
+		old_green[1] = this.green_face[1].slice();
+		old_green[2] = this.green_face[2].slice();
 		
-		old_opposite[0] = this.o_face[0].slice();
-		old_opposite[1] = this.o_face[1].slice();
-		old_opposite[2] = this.o_face[2].slice();
+		old_opposite[0] = this.red_face[0].slice();
+		old_opposite[1] = this.red_face[1].slice();
+		old_opposite[2] = this.red_face[2].slice();
 		
-		old_left[0] = this.l_face[0].slice();
-		old_left[1] = this.l_face[1].slice();
-		old_left[2] = this.l_face[2].slice();
+		old_yellow[0] = this.yellow_face[0].slice();
+		old_yellow[1] = this.yellow_face[1].slice();
+		old_yellow[2] = this.yellow_face[2].slice();
 		
-		old_right[0] = this.r_face[0].slice();
-		old_right[1] = this.r_face[1].slice();
-		old_right[2] = this.r_face[2].slice();
+		old_white[0] = this.white_face[0].slice();
+		old_white[1] = this.white_face[1].slice();
+		old_white[2] = this.white_face[2].slice();
 
-		this.b_face[0][0] =old_bottom[2][0];
-		this.b_face[0][1] =old_bottom[1][0];
-		this.b_face[0][2] =old_bottom[0][0];
+		this.green_face[0][0] =old_green[2][0];
+		this.green_face[0][1] =old_green[1][0];
+		this.green_face[0][2] =old_green[0][0];
 		
-		this.b_face[1][0] =old_bottom[2][1];
-		/* unchanged this.b_face[1][1] */
-		this.b_face[1][2] =old_bottom[0][1];
+		this.green_face[1][0] =old_green[2][1];
+		/* unchanged this.green_face[1][1] */
+		this.green_face[1][2] =old_green[0][1];
 		
-		this.b_face[2][0] =old_bottom[2][2];
-		this.b_face[2][1] =old_bottom[1][2];
-		this.b_face[2][2] =old_bottom[0][2];
+		this.green_face[2][0] =old_green[2][2];
+		this.green_face[2][1] =old_green[1][2];
+		this.green_face[2][2] =old_green[0][2];
 		
-		this.l_face[2][0] = old_opposite[2][0];
-		this.l_face[2][1] = old_opposite[2][1];
-		this.l_face[2][2] = old_opposite[2][2];
+		this.yellow_face[2][0] = old_opposite[2][0];
+		this.yellow_face[2][1] = old_opposite[2][1];
+		this.yellow_face[2][2] = old_opposite[2][2];
 			
-		this.r_face[2][0] = old_front[2][0];
-		this.r_face[2][1] = old_front[2][1];
-		this.r_face[2][2] = old_front[2][2];
+		this.white_face[2][0] = old_orange[2][0];
+		this.white_face[2][1] = old_orange[2][1];
+		this.white_face[2][2] = old_orange[2][2];
 		
-		this.o_face[2][0] = old_right[2][0];
-		this.o_face[2][1] = old_right[2][1];
-		this.o_face[2][2] = old_right[2][2];
+		this.red_face[2][0] = old_white[2][0];
+		this.red_face[2][1] = old_white[2][1];
+		this.red_face[2][2] = old_white[2][2];
 
-		this.f_face[2][0] = old_left[2][0];
-		this.f_face[2][1] = old_left[2][1];
-		this.f_face[2][2] = old_left[2][2];
+		this.orange_face[2][0] = old_yellow[2][0];
+		this.orange_face[2][1] = old_yellow[2][1];
+		this.orange_face[2][2] = old_yellow[2][2];
 		
 	}else{
-		var old_front = Array();
-		var old_bottom = Array();
+		var old_orange = Array();
+		var old_green = Array();
 		var old_opposite = Array();
-		var old_left = Array();
-		var old_right = Array();
-		old_front[0] = this.f_face[0].slice();
-		old_front[1] = this.f_face[1].slice();
-		old_front[2] = this.f_face[2].slice();
+		var old_yellow = Array();
+		var old_white = Array();
+		old_orange[0] = this.orange_face[0].slice();
+		old_orange[1] = this.orange_face[1].slice();
+		old_orange[2] = this.orange_face[2].slice();
 		
-		old_bottom[0] = this.b_face[0].slice();
-		old_bottom[1] = this.b_face[1].slice();
-		old_bottom[2] = this.b_face[2].slice();
+		old_green[0] = this.green_face[0].slice();
+		old_green[1] = this.green_face[1].slice();
+		old_green[2] = this.green_face[2].slice();
 		
-		old_opposite[0] = this.o_face[0].slice();
-		old_opposite[1] = this.o_face[1].slice();
-		old_opposite[2] = this.o_face[2].slice();
+		old_opposite[0] = this.red_face[0].slice();
+		old_opposite[1] = this.red_face[1].slice();
+		old_opposite[2] = this.red_face[2].slice();
 		
-		old_left[0] = this.l_face[0].slice();
-		old_left[1] = this.l_face[1].slice();
-		old_left[2] = this.l_face[2].slice();
+		old_yellow[0] = this.yellow_face[0].slice();
+		old_yellow[1] = this.yellow_face[1].slice();
+		old_yellow[2] = this.yellow_face[2].slice();
 		
-		old_right[0] = this.r_face[0].slice();
-		old_right[1] = this.r_face[1].slice();
-		old_right[2] = this.r_face[2].slice();
+		old_white[0] = this.white_face[0].slice();
+		old_white[1] = this.white_face[1].slice();
+		old_white[2] = this.white_face[2].slice();
 
-		this.b_face[0][0] =old_bottom[0][2];
-		this.b_face[0][1] =old_bottom[1][2];
-		this.b_face[0][2] =old_bottom[2][2];
+		this.green_face[0][0] =old_green[0][2];
+		this.green_face[0][1] =old_green[1][2];
+		this.green_face[0][2] =old_green[2][2];
 		
-		this.b_face[1][0] =old_bottom[0][1];
-		/* unchanged this.b_face[1][1] */
-		this.b_face[1][2] =old_bottom[2][1];
+		this.green_face[1][0] =old_green[0][1];
+		/* unchanged this.green_face[1][1] */
+		this.green_face[1][2] =old_green[2][1];
 		
-		this.b_face[2][0] =old_bottom[0][0];
-		this.b_face[2][1] =old_bottom[1][0];
-		this.b_face[2][2] =old_bottom[2][0];
+		this.green_face[2][0] =old_green[0][0];
+		this.green_face[2][1] =old_green[1][0];
+		this.green_face[2][2] =old_green[2][0];
 		
-		this.l_face[2][0] = old_front[2][0];
-		this.l_face[2][1] = old_front[2][1];
-		this.l_face[2][2] = old_front[2][2];
+		this.yellow_face[2][0] = old_orange[2][0];
+		this.yellow_face[2][1] = old_orange[2][1];
+		this.yellow_face[2][2] = old_orange[2][2];
 			
-		this.r_face[2][0] = old_opposite[2][0];
-		this.r_face[2][1] = old_opposite[2][1];
-		this.r_face[2][2] = old_opposite[2][2];
+		this.white_face[2][0] = old_opposite[2][0];
+		this.white_face[2][1] = old_opposite[2][1];
+		this.white_face[2][2] = old_opposite[2][2];
 		
-		this.o_face[2][0] = old_left[2][0];
-		this.o_face[2][1] = old_left[2][1];
-		this.o_face[2][2] = old_left[2][2];
+		this.red_face[2][0] = old_yellow[2][0];
+		this.red_face[2][1] = old_yellow[2][1];
+		this.red_face[2][2] = old_yellow[2][2];
 
-		this.f_face[2][0] = old_right[2][0];
-		this.f_face[2][1] = old_right[2][1];
-		this.f_face[2][2] = old_right[2][2];
+		this.orange_face[2][0] = old_white[2][0];
+		this.orange_face[2][1] = old_white[2][1];
+		this.orange_face[2][2] = old_white[2][2];
 	}
 }
 
-RubikCube.prototype.rotateLeft = function(inverse){
+RubikCube.prototype.rotateYellow = function(inverse){
 	if (!inverse){
-		var old_front = Array();
-		var old_bottom = Array();
+		var old_orange = Array();
+		var old_green = Array();
 		var old_opposite = Array();
-		var old_left = Array();
-		var old_top = Array();
-		old_front[0] = this.f_face[0].slice();
-		old_front[1] = this.f_face[1].slice();
-		old_front[2] = this.f_face[2].slice();
+		var old_yellow = Array();
+		var old_blue = Array();
+		old_orange[0] = this.orange_face[0].slice();
+		old_orange[1] = this.orange_face[1].slice();
+		old_orange[2] = this.orange_face[2].slice();
 		
-		old_bottom[0] = this.b_face[0].slice();
-		old_bottom[1] = this.b_face[1].slice();
-		old_bottom[2] = this.b_face[2].slice();
+		old_green[0] = this.green_face[0].slice();
+		old_green[1] = this.green_face[1].slice();
+		old_green[2] = this.green_face[2].slice();
 		
-		old_opposite[0] = this.o_face[0].slice();
-		old_opposite[1] = this.o_face[1].slice();
-		old_opposite[2] = this.o_face[2].slice();
+		old_opposite[0] = this.red_face[0].slice();
+		old_opposite[1] = this.red_face[1].slice();
+		old_opposite[2] = this.red_face[2].slice();
 		
-		old_left[0] = this.l_face[0].slice();
-		old_left[1] = this.l_face[1].slice();
-		old_left[2] = this.l_face[2].slice();
+		old_yellow[0] = this.yellow_face[0].slice();
+		old_yellow[1] = this.yellow_face[1].slice();
+		old_yellow[2] = this.yellow_face[2].slice();
 		
-		old_top[0] = this.t_face[0].slice();
-		old_top[1] = this.t_face[1].slice();
-		old_top[2] = this.t_face[2].slice();
+		old_blue[0] = this.blue_face[0].slice();
+		old_blue[1] = this.blue_face[1].slice();
+		old_blue[2] = this.blue_face[2].slice();
 
-		this.l_face[0][0] =old_left[2][0];
-		this.l_face[0][1] =old_left[1][0];
-		this.l_face[0][2] =old_left[0][0];
+		this.yellow_face[0][0] =old_yellow[2][0];
+		this.yellow_face[0][1] =old_yellow[1][0];
+		this.yellow_face[0][2] =old_yellow[0][0];
 		
-		this.l_face[1][0] =old_left[2][1];
-		/* unchanged this.l_face[1][1] */
-		this.l_face[1][2] =old_left[0][1];
+		this.yellow_face[1][0] =old_yellow[2][1];
+		/* unchanged this.yellow_face[1][1] */
+		this.yellow_face[1][2] =old_yellow[0][1];
 		
-		this.l_face[2][0] =old_left[2][2];
-		this.l_face[2][1] =old_left[1][2];
-		this.l_face[2][2] =old_left[0][2];
+		this.yellow_face[2][0] =old_yellow[2][2];
+		this.yellow_face[2][1] =old_yellow[1][2];
+		this.yellow_face[2][2] =old_yellow[0][2];
 		
-		this.b_face[0][0] = old_front[0][0];
-		this.b_face[1][0] = old_front[1][0];
-		this.b_face[2][0] = old_front[2][0];
+		this.green_face[0][0] = old_orange[0][0];
+		this.green_face[1][0] = old_orange[1][0];
+		this.green_face[2][0] = old_orange[2][0];
 			
-		this.t_face[0][0] = old_opposite[2][2];
-		this.t_face[1][0] = old_opposite[1][2];
-		this.t_face[2][0] = old_opposite[0][2];
+		this.blue_face[0][0] = old_opposite[2][2];
+		this.blue_face[1][0] = old_opposite[1][2];
+		this.blue_face[2][0] = old_opposite[0][2];
 		
-		this.o_face[0][2] = old_bottom[2][0];
-		this.o_face[1][2] = old_bottom[1][0];
-		this.o_face[2][2] = old_bottom[0][0];
+		this.red_face[0][2] = old_green[2][0];
+		this.red_face[1][2] = old_green[1][0];
+		this.red_face[2][2] = old_green[0][0];
 
-		this.f_face[0][0] = old_top[0][0];
-		this.f_face[1][0] = old_top[1][0];
-		this.f_face[2][0] = old_top[2][0];
+		this.orange_face[0][0] = old_blue[0][0];
+		this.orange_face[1][0] = old_blue[1][0];
+		this.orange_face[2][0] = old_blue[2][0];
 		
 	}else{
-		var old_front = Array();
-		var old_bottom = Array();
+		var old_orange = Array();
+		var old_green = Array();
 		var old_opposite = Array();
-		var old_left = Array();
-		var old_top = Array();
-		old_front[0] = this.f_face[0].slice();
-		old_front[1] = this.f_face[1].slice();
-		old_front[2] = this.f_face[2].slice();
+		var old_yellow = Array();
+		var old_blue = Array();
+		old_orange[0] = this.orange_face[0].slice();
+		old_orange[1] = this.orange_face[1].slice();
+		old_orange[2] = this.orange_face[2].slice();
 		
-		old_bottom[0] = this.b_face[0].slice();
-		old_bottom[1] = this.b_face[1].slice();
-		old_bottom[2] = this.b_face[2].slice();
+		old_green[0] = this.green_face[0].slice();
+		old_green[1] = this.green_face[1].slice();
+		old_green[2] = this.green_face[2].slice();
 		
-		old_opposite[0] = this.o_face[0].slice();
-		old_opposite[1] = this.o_face[1].slice();
-		old_opposite[2] = this.o_face[2].slice();
+		old_opposite[0] = this.red_face[0].slice();
+		old_opposite[1] = this.red_face[1].slice();
+		old_opposite[2] = this.red_face[2].slice();
 		
-		old_left[0] = this.l_face[0].slice();
-		old_left[1] = this.l_face[1].slice();
-		old_left[2] = this.l_face[2].slice();
+		old_yellow[0] = this.yellow_face[0].slice();
+		old_yellow[1] = this.yellow_face[1].slice();
+		old_yellow[2] = this.yellow_face[2].slice();
 		
-		old_top[0] = this.t_face[0].slice();
-		old_top[1] = this.t_face[1].slice();
-		old_top[2] = this.t_face[2].slice();
+		old_blue[0] = this.blue_face[0].slice();
+		old_blue[1] = this.blue_face[1].slice();
+		old_blue[2] = this.blue_face[2].slice();
 
-		this.l_face[0][0] =old_left[0][2];
-		this.l_face[0][1] =old_left[1][2];
-		this.l_face[0][2] =old_left[0][2];
+		this.yellow_face[0][0] =old_yellow[0][2];
+		this.yellow_face[0][1] =old_yellow[1][2];
+		this.yellow_face[0][2] =old_yellow[0][2];
 		
-		this.l_face[1][0] =old_left[0][1];
-		/* unchanged this.l_face[1][1] */
-		this.l_face[1][2] =old_left[2][1];
+		this.yellow_face[1][0] =old_yellow[0][1];
+		/* unchanged this.yellow_face[1][1] */
+		this.yellow_face[1][2] =old_yellow[2][1];
 		
-		this.l_face[2][0] =old_left[0][0];
-		this.l_face[2][1] =old_left[1][0];
-		this.l_face[2][2] =old_left[2][0];
+		this.yellow_face[2][0] =old_yellow[0][0];
+		this.yellow_face[2][1] =old_yellow[1][0];
+		this.yellow_face[2][2] =old_yellow[2][0];
 		
-		this.b_face[0][0] = old_opposite[2][2];
-		this.b_face[1][0] = old_opposite[1][2];
-		this.b_face[2][0] = old_opposite[0][2];
+		this.green_face[0][0] = old_opposite[2][2];
+		this.green_face[1][0] = old_opposite[1][2];
+		this.green_face[2][0] = old_opposite[0][2];
 			
-		this.t_face[0][0] = old_front[0][0];
-		this.t_face[1][0] = old_front[1][0];
-		this.t_face[2][0] = old_front[2][0];
+		this.blue_face[0][0] = old_orange[0][0];
+		this.blue_face[1][0] = old_orange[1][0];
+		this.blue_face[2][0] = old_orange[2][0];
 		
-		this.o_face[0][2] = old_top[2][0];
-		this.o_face[1][2] = old_top[1][0];
-		this.o_face[2][2] = old_top[0][0];
+		this.red_face[0][2] = old_blue[2][0];
+		this.red_face[1][2] = old_blue[1][0];
+		this.red_face[2][2] = old_blue[0][0];
 
-		this.f_face[0][0] = old_bottom[0][0];
-		this.f_face[1][0] = old_bottom[1][0];
-		this.f_face[2][0] = old_bottom[2][0];
+		this.orange_face[0][0] = old_green[0][0];
+		this.orange_face[1][0] = old_green[1][0];
+		this.orange_face[2][0] = old_green[2][0];
 	}
 }
 
-RubikCube.prototype.rotateRight = function(inverse){
+RubikCube.prototype.rotateWhite = function(inverse){
 	if (!inverse){
-		var old_front = Array();
-		var old_bottom = Array();
+		var old_orange = Array();
+		var old_green = Array();
 		var old_opposite = Array();
-		var old_right = Array();
-		var old_top = Array();
-		old_front[0] = this.f_face[0].slice();
-		old_front[1] = this.f_face[1].slice();
-		old_front[2] = this.f_face[2].slice();
+		var old_white = Array();
+		var old_blue = Array();
+		old_orange[0] = this.orange_face[0].slice();
+		old_orange[1] = this.orange_face[1].slice();
+		old_orange[2] = this.orange_face[2].slice();
 		
-		old_bottom[0] = this.b_face[0].slice();
-		old_bottom[1] = this.b_face[1].slice();
-		old_bottom[2] = this.b_face[2].slice();
+		old_green[0] = this.green_face[0].slice();
+		old_green[1] = this.green_face[1].slice();
+		old_green[2] = this.green_face[2].slice();
 		
-		old_opposite[0] = this.o_face[0].slice();
-		old_opposite[1] = this.o_face[1].slice();
-		old_opposite[2] = this.o_face[2].slice();
+		old_opposite[0] = this.red_face[0].slice();
+		old_opposite[1] = this.red_face[1].slice();
+		old_opposite[2] = this.red_face[2].slice();
 		
-		old_right[0] = this.r_face[0].slice();
-		old_right[1] = this.r_face[1].slice();
-		old_right[2] = this.r_face[2].slice();
+		old_white[0] = this.white_face[0].slice();
+		old_white[1] = this.white_face[1].slice();
+		old_white[2] = this.white_face[2].slice();
 		
-		old_top[0] = this.t_face[0].slice();
-		old_top[1] = this.t_face[1].slice();
-		old_top[2] = this.t_face[2].slice();
+		old_blue[0] = this.blue_face[0].slice();
+		old_blue[1] = this.blue_face[1].slice();
+		old_blue[2] = this.blue_face[2].slice();
 
-		this.r_face[0][0] =old_right[2][0];
-		this.r_face[0][1] =old_right[1][0];
-		this.r_face[0][2] =old_right[0][0];
+		this.white_face[0][0] =old_white[2][0];
+		this.white_face[0][1] =old_white[1][0];
+		this.white_face[0][2] =old_white[0][0];
 		
-		this.r_face[1][0] =old_right[2][1];
-		/* unchanged this.l_face[1][1] */
-		this.r_face[1][2] =old_right[0][1];
+		this.white_face[1][0] =old_white[2][1];
+		/* unchanged this.yellow_face[1][1] */
+		this.white_face[1][2] =old_white[0][1];
 		
-		this.r_face[2][0] =old_right[2][2];
-		this.r_face[2][1] =old_right[1][2];
-		this.r_face[2][2] =old_right[0][2];
+		this.white_face[2][0] =old_white[2][2];
+		this.white_face[2][1] =old_white[1][2];
+		this.white_face[2][2] =old_white[0][2];
 		
-		this.b_face[0][2] = old_opposite[0][0];
-		this.b_face[1][2] = old_opposite[1][0];
-		this.b_face[2][2] = old_opposite[2][0];
+		this.green_face[0][2] = old_opposite[0][0];
+		this.green_face[1][2] = old_opposite[1][0];
+		this.green_face[2][2] = old_opposite[2][0];
 			
-		this.t_face[0][2] = old_front[0][2];
-		this.t_face[1][2] = old_front[1][2];
-		this.t_face[2][2] = old_front[2][2];
+		this.blue_face[0][2] = old_orange[0][2];
+		this.blue_face[1][2] = old_orange[1][2];
+		this.blue_face[2][2] = old_orange[2][2];
 		
-		this.o_face[0][0] = old_top[2][2];
-		this.o_face[1][0] = old_top[1][2];
-		this.o_face[2][0] = old_top[0][2];
+		this.red_face[0][0] = old_blue[2][2];
+		this.red_face[1][0] = old_blue[1][2];
+		this.red_face[2][0] = old_blue[0][2];
 
-		this.f_face[0][2] = old_bottom[0][2];
-		this.f_face[1][2] = old_bottom[1][2];
-		this.f_face[2][2] = old_bottom[2][2];
+		this.orange_face[0][2] = old_green[0][2];
+		this.orange_face[1][2] = old_green[1][2];
+		this.orange_face[2][2] = old_green[2][2];
 		
 	}else{
-		var old_front = Array();
-		var old_bottom = Array();
+		var old_orange = Array();
+		var old_green = Array();
 		var old_opposite = Array();
-		var old_right = Array();
-		var old_top = Array();
-		old_front[0] = this.f_face[0].slice();
-		old_front[1] = this.f_face[1].slice();
-		old_front[2] = this.f_face[2].slice();
+		var old_white = Array();
+		var old_blue = Array();
+		old_orange[0] = this.orange_face[0].slice();
+		old_orange[1] = this.orange_face[1].slice();
+		old_orange[2] = this.orange_face[2].slice();
 		
-		old_bottom[0] = this.b_face[0].slice();
-		old_bottom[1] = this.b_face[1].slice();
-		old_bottom[2] = this.b_face[2].slice();
+		old_green[0] = this.green_face[0].slice();
+		old_green[1] = this.green_face[1].slice();
+		old_green[2] = this.green_face[2].slice();
 		
-		old_opposite[0] = this.o_face[0].slice();
-		old_opposite[1] = this.o_face[1].slice();
-		old_opposite[2] = this.o_face[2].slice();
+		old_opposite[0] = this.red_face[0].slice();
+		old_opposite[1] = this.red_face[1].slice();
+		old_opposite[2] = this.red_face[2].slice();
 		
-		old_right[0] = this.r_face[0].slice();
-		old_right[1] = this.r_face[1].slice();
-		old_right[2] = this.r_face[2].slice();
+		old_white[0] = this.white_face[0].slice();
+		old_white[1] = this.white_face[1].slice();
+		old_white[2] = this.white_face[2].slice();
 		
-		old_top[0] = this.t_face[0].slice();
-		old_top[1] = this.t_face[1].slice();
-		old_top[2] = this.t_face[2].slice();
+		old_blue[0] = this.blue_face[0].slice();
+		old_blue[1] = this.blue_face[1].slice();
+		old_blue[2] = this.blue_face[2].slice();
 
-		this.r_face[0][0] =old_right[0][2];
-		this.r_face[0][1] =old_right[1][2];
-		this.r_face[0][2] =old_right[2][2];
+		this.white_face[0][0] =old_white[0][2];
+		this.white_face[0][1] =old_white[1][2];
+		this.white_face[0][2] =old_white[2][2];
 		
-		this.r_face[1][0] =old_right[0][1];
-		/* unchanged this.r_face[1][1] */
-		this.r_face[1][2] =old_right[2][1];
+		this.white_face[1][0] =old_white[0][1];
+		/* unchanged this.white_face[1][1] */
+		this.white_face[1][2] =old_white[2][1];
 		
-		this.r_face[2][0] =old_right[0][0];
-		this.r_face[2][1] =old_right[1][0];
-		this.r_face[2][2] =old_right[2][0];
+		this.white_face[2][0] =old_white[0][0];
+		this.white_face[2][1] =old_white[1][0];
+		this.white_face[2][2] =old_white[2][0];
 		
-		this.b_face[0][2] = old_front[0][2];
-		this.b_face[1][2] = old_front[1][2];
-		this.b_face[2][2] = old_front[2][2];
+		this.green_face[0][2] = old_orange[0][2];
+		this.green_face[1][2] = old_orange[1][2];
+		this.green_face[2][2] = old_orange[2][2];
 			
-		this.t_face[0][2] = old_opposite[2][0];
-		this.t_face[1][2] = old_opposite[1][0];
-		this.t_face[2][2] = old_opposite[0][0];
+		this.blue_face[0][2] = old_opposite[2][0];
+		this.blue_face[1][2] = old_opposite[1][0];
+		this.blue_face[2][2] = old_opposite[0][0];
 		
-		this.o_face[0][0] = old_bottom[2][2];
-		this.o_face[1][0] = old_bottom[1][2];
-		this.o_face[2][0] = old_bottom[0][2];
+		this.red_face[0][0] = old_green[2][2];
+		this.red_face[1][0] = old_green[1][2];
+		this.red_face[2][0] = old_green[0][2];
 
-		this.f_face[0][2] = old_top[0][2];
-		this.f_face[1][2] = old_top[1][2];
-		this.f_face[2][2] = old_top[2][2];
+		this.orange_face[0][2] = old_blue[0][2];
+		this.orange_face[1][2] = old_blue[1][2];
+		this.orange_face[2][2] = old_blue[2][2];
 	}
 }
 
-RubikCube.prototype.rotateOpposite = function(inverse){
+RubikCube.prototype.rotateRed = function(inverse){
 	if (!inverse){
 		var old_opposite = Array();
-		var old_top = Array();
-		var old_bottom = Array();
-		var old_left = Array();
-		var old_right = Array();
-		old_opposite[0] = this.o_face[0].slice();
-		old_opposite[1] = this.o_face[1].slice();
-		old_opposite[2] = this.o_face[2].slice();
+		var old_blue = Array();
+		var old_green = Array();
+		var old_yellow = Array();
+		var old_white = Array();
+		old_opposite[0] = this.red_face[0].slice();
+		old_opposite[1] = this.red_face[1].slice();
+		old_opposite[2] = this.red_face[2].slice();
 		
-		old_top[0] = this.t_face[0].slice();
-		old_top[1] = this.t_face[1].slice();
-		old_top[2] = this.t_face[2].slice();
+		old_blue[0] = this.blue_face[0].slice();
+		old_blue[1] = this.blue_face[1].slice();
+		old_blue[2] = this.blue_face[2].slice();
 		
-		old_bottom[0] = this.b_face[0].slice();
-		old_bottom[1] = this.b_face[1].slice();
-		old_bottom[2] = this.b_face[2].slice();
+		old_green[0] = this.green_face[0].slice();
+		old_green[1] = this.green_face[1].slice();
+		old_green[2] = this.green_face[2].slice();
 		
-		old_left[0] = this.l_face[0].slice();
-		old_left[1] = this.l_face[1].slice();
-		old_left[2] = this.l_face[2].slice();
+		old_yellow[0] = this.yellow_face[0].slice();
+		old_yellow[1] = this.yellow_face[1].slice();
+		old_yellow[2] = this.yellow_face[2].slice();
 		
-		old_right[0] = this.r_face[0].slice();
-		old_right[1] = this.r_face[1].slice();
-		old_right[2] = this.r_face[2].slice();
+		old_white[0] = this.white_face[0].slice();
+		old_white[1] = this.white_face[1].slice();
+		old_white[2] = this.white_face[2].slice();
 
-		this.o_face[0][0] =old_opposite[2][0];
-		this.o_face[0][1] =old_opposite[1][0];
-		this.o_face[0][2] =old_opposite[0][0];
+		this.red_face[0][0] =old_opposite[2][0];
+		this.red_face[0][1] =old_opposite[1][0];
+		this.red_face[0][2] =old_opposite[0][0];
 		
-		this.o_face[1][0] =old_opposite[2][1];
-		/* unchanged this.f_face[1][1] */
-		this.o_face[1][2] =old_opposite[0][1];
+		this.red_face[1][0] =old_opposite[2][1];
+		/* unchanged this.orange_face[1][1] */
+		this.red_face[1][2] =old_opposite[0][1];
 		
-		this.o_face[2][0] =old_opposite[2][2];
-		this.o_face[2][1] =old_opposite[1][2];
-		this.o_face[2][2] =old_opposite[0][2];
+		this.red_face[2][0] =old_opposite[2][2];
+		this.red_face[2][1] =old_opposite[1][2];
+		this.red_face[2][2] =old_opposite[0][2];
 		
-		this.t_face[0][0] = old_right[0][2];
-		this.t_face[0][1] = old_right[1][2];
-		this.t_face[0][2] = old_right[2][2];
+		this.blue_face[0][0] = old_white[0][2];
+		this.blue_face[0][1] = old_white[1][2];
+		this.blue_face[0][2] = old_white[2][2];
 
-		this.b_face[2][0] = old_left[0][0];
-		this.b_face[2][1] = old_left[1][0];
-		this.b_face[2][2] = old_left[2][0];
+		this.green_face[2][0] = old_yellow[0][0];
+		this.green_face[2][1] = old_yellow[1][0];
+		this.green_face[2][2] = old_yellow[2][0];
 
-		this.l_face[0][0] = old_top[0][2];
-		this.l_face[1][0] = old_top[0][1];
-		this.l_face[2][0] = old_top[0][0];
+		this.yellow_face[0][0] = old_blue[0][2];
+		this.yellow_face[1][0] = old_blue[0][1];
+		this.yellow_face[2][0] = old_blue[0][0];
 		
-		this.r_face[0][2] = old_bottom[2][2];
-		this.r_face[1][2] = old_bottom[2][1];
-		this.r_face[2][2] = old_bottom[2][0];
+		this.white_face[0][2] = old_green[2][2];
+		this.white_face[1][2] = old_green[2][1];
+		this.white_face[2][2] = old_green[2][0];
 		
 	}else{
 		var old_opposite = Array();
-		var old_top = Array();
-		var old_bottom = Array();
-		var old_left = Array();
-		var old_right = Array();
-		old_opposite[0] = this.o_face[0].slice();
-		old_opposite[1] = this.o_face[1].slice();
-		old_opposite[2] = this.o_face[2].slice();
+		var old_blue = Array();
+		var old_green = Array();
+		var old_yellow = Array();
+		var old_white = Array();
+		old_opposite[0] = this.red_face[0].slice();
+		old_opposite[1] = this.red_face[1].slice();
+		old_opposite[2] = this.red_face[2].slice();
 		
-		old_top[0] = this.t_face[0].slice();
-		old_top[1] = this.t_face[1].slice();
-		old_top[2] = this.t_face[2].slice();
+		old_blue[0] = this.blue_face[0].slice();
+		old_blue[1] = this.blue_face[1].slice();
+		old_blue[2] = this.blue_face[2].slice();
 		
-		old_bottom[0] = this.b_face[0].slice();
-		old_bottom[1] = this.b_face[1].slice();
-		old_bottom[2] = this.b_face[2].slice();
+		old_green[0] = this.green_face[0].slice();
+		old_green[1] = this.green_face[1].slice();
+		old_green[2] = this.green_face[2].slice();
 		
-		old_left[0] = this.l_face[0].slice();
-		old_left[1] = this.l_face[1].slice();
-		old_left[2] = this.l_face[2].slice();
+		old_yellow[0] = this.yellow_face[0].slice();
+		old_yellow[1] = this.yellow_face[1].slice();
+		old_yellow[2] = this.yellow_face[2].slice();
 		
-		old_right[0] = this.r_face[0].slice();
-		old_right[1] = this.r_face[1].slice();
-		old_right[2] = this.r_face[2].slice();
+		old_white[0] = this.white_face[0].slice();
+		old_white[1] = this.white_face[1].slice();
+		old_white[2] = this.white_face[2].slice();
 
-		this.o_face[0][0] =old_opposite[0][2];
-		this.o_face[0][1] =old_opposite[1][2];
-		this.o_face[0][2] =old_opposite[2][2];
+		this.red_face[0][0] =old_opposite[0][2];
+		this.red_face[0][1] =old_opposite[1][2];
+		this.red_face[0][2] =old_opposite[2][2];
 		
-		this.o_face[1][0] =old_opposite[0][1];
-		/* unchanged this.f_face[1][1] */
-		this.o_face[1][2] =old_opposite[2][1];
+		this.red_face[1][0] =old_opposite[0][1];
+		/* unchanged this.orange_face[1][1] */
+		this.red_face[1][2] =old_opposite[2][1];
 		
-		this.o_face[2][0] =old_opposite[0][0];
-		this.o_face[2][1] =old_opposite[1][0];
-		this.o_face[2][2] =old_opposite[2][0];
+		this.red_face[2][0] =old_opposite[0][0];
+		this.red_face[2][1] =old_opposite[1][0];
+		this.red_face[2][2] =old_opposite[2][0];
 		
-		this.t_face[0][0] = old_left[0][0];
-		this.t_face[0][1] = old_left[1][0];
-		this.t_face[0][2] = old_left[2][0];
+		this.blue_face[0][0] = old_yellow[0][0];
+		this.blue_face[0][1] = old_yellow[1][0];
+		this.blue_face[0][2] = old_yellow[2][0];
 
-		this.b_face[2][0] = old_right[2][2];
-		this.b_face[2][1] = old_right[1][2];
-		this.b_face[2][2] = old_right[0][2];
+		this.green_face[2][0] = old_white[2][2];
+		this.green_face[2][1] = old_white[1][2];
+		this.green_face[2][2] = old_white[0][2];
 
-		this.l_face[0][0] = old_bottom[2][0];
-		this.l_face[1][0] = old_bottom[2][1];
-		this.l_face[2][0] = old_bottom[2][2];
+		this.yellow_face[0][0] = old_green[2][0];
+		this.yellow_face[1][0] = old_green[2][1];
+		this.yellow_face[2][0] = old_green[2][2];
 		
-		this.r_face[0][2] = old_top[0][0];
-		this.r_face[1][2] = old_top[0][1];
-		this.r_face[2][2] = old_top[0][2];
+		this.white_face[0][2] = old_blue[0][0];
+		this.white_face[1][2] = old_blue[0][1];
+		this.white_face[2][2] = old_blue[0][2];
 	}
 }
 
