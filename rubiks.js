@@ -29,7 +29,7 @@ RubikCube = function(){
 		['r','r','r'],
 		['r','r','r']
     ];
-
+	this.total_fitness_points = 48;
 };
 
 RubikCube.prototype.rotateOrange = function(inverse){
@@ -699,4 +699,68 @@ RubikCube.prototype.rotateRed = function(inverse){
 }
 
 RubikCube.prototype.shuffle = function(){
+	moves = Math.floor((Math.random()*10)+10);
+	for (i=0; i<moves; i++){
+		move = Math.floor((Math.random()*12)+1);
+		if (move === 1){
+			this.rotateOrange(false);
+		}else if (move === 2){
+			this.rotateOrange(true);
+		}else if (move === 3){
+			this.rotateBlue(false);
+		}else if (move === 4){
+			this.rotateBlue(true);
+		}else if (move == 5){
+			this.rotateGreen(false);
+		}else if (move === 6){
+			this.rotateGreen(true);
+		}else if (move === 7){
+			this.rotateWhite(false);
+		}else if (move === 8){
+			this.rotateWhite(true);
+		}else if (move === 9){
+			this.rotateYellow(false);
+		}else if (move === 10){
+			this.rotateYellow(true);
+		}else if (move === 11){
+			this.rotateRed(false);
+		}else if (move === 12){
+			this.rotateRed(true);
+		}
+	
+	}
 }
+
+RubikCube.prototype.fitnessMeasure = function(){
+	var fitness_score = 0;
+	fitness_score = fitness_score + this.fitnessMeasureSide(this.orange_face);
+	fitness_score = fitness_score + this.fitnessMeasureSide(this.blue_face);
+	fitness_score = fitness_score + this.fitnessMeasureSide(this.green_face);
+	fitness_score = fitness_score + this.fitnessMeasureSide(this.white_face);
+	fitness_score = fitness_score + this.fitnessMeasureSide(this.yellow_face);
+	fitness_score = fitness_score + this.fitnessMeasureSide(this.red_face);
+	return fitness_score/this.total_fitness_points;
+}
+RubikCube.prototype.fitnessMeasureSide = function(side){
+	var score = 0;
+	var color = side[1][1];
+	if (side[0][0] === color)
+		score += 1;
+	if (side[0][1] === color)
+		score += 1;
+	if (side[0][2] === color)
+		score += 1;
+	if (side[1][0] === color)
+		score += 1;
+	if (side[1][2] === color)
+		score += 1;
+	if (side[2][0] === color)
+		score += 1;
+	if (side[2][1] === color)
+		score += 1;
+	if (side[2][2] === color)
+		score += 1;
+	return score;
+}
+
+
