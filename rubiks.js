@@ -30,6 +30,18 @@ RubikCube = function(){
 		['r','r','r']
     ];
 	this.total_fitness_points = 48;
+	this.rotate_map = {
+		'o' : this.rotateOrange,
+		'oi' : this.rotateOrangeInverse,
+		'b' : this.rotateBlue,
+		'bi' : this.rotateBlueInverse,
+		'g' : this.rotateGreen,
+		'gi' : this.rotateGreenInverse,
+		'y' : this.rotateYellow,
+		'yi' : this.rotateYellowInverse,
+		'r' : this.rotateRed,
+		'ri' : this.rotateRedInverse
+	}
 };
 
 RubikCube.prototype.rotateOrange = function(inverse){
@@ -142,6 +154,9 @@ RubikCube.prototype.rotateOrange = function(inverse){
 		this.white_face[2][0] = old_green[0][0];
 	}
 }
+RubikCube.prototype.rotateOrangeInverse = function(){
+	this.rotateOrange(true);
+}
 
 RubikCube.prototype.rotateBlue = function(inverse){
 	if (!inverse){
@@ -252,6 +267,9 @@ RubikCube.prototype.rotateBlue = function(inverse){
 		this.orange_face[0][1] = old_yellow[0][1];
 		this.orange_face[0][2] = old_yellow[0][2];
 	}
+}
+RubikCube.prototype.rotateBlueInverse = function(){
+	this.rotateBlue(true);
 }
 
 RubikCube.prototype.rotateGreen = function(inverse){
@@ -364,7 +382,9 @@ RubikCube.prototype.rotateGreen = function(inverse){
 		this.orange_face[2][2] = old_white[2][2];
 	}
 }
-
+RubikCube.prototype.rotateGreenInverse = function(){
+	this.rotateGreen(true);
+}
 RubikCube.prototype.rotateYellow = function(inverse){
 	if (!inverse){
 		var old_orange = Array();
@@ -474,6 +494,9 @@ RubikCube.prototype.rotateYellow = function(inverse){
 		this.orange_face[1][0] = old_green[1][0];
 		this.orange_face[2][0] = old_green[2][0];
 	}
+}
+RubikCube.prototype.rotateYellowInverse = function(){
+	this.rotateYellow(true);
 }
 
 RubikCube.prototype.rotateWhite = function(inverse){
@@ -586,6 +609,9 @@ RubikCube.prototype.rotateWhite = function(inverse){
 		this.orange_face[2][2] = old_blue[2][2];
 	}
 }
+RubikCube.prototype.rotateWhiteInverse = function(){
+	this.rotateWhite(true);
+}
 
 RubikCube.prototype.rotateRed = function(inverse){
 	if (!inverse){
@@ -697,7 +723,9 @@ RubikCube.prototype.rotateRed = function(inverse){
 		this.white_face[2][2] = old_blue[0][2];
 	}
 }
-
+RubikCube.prototype.rotateRedInverse = function(){
+	this.rotateRed(true);
+}
 RubikCube.prototype.shuffle = function(){
 	moves = Math.floor((Math.random()*10)+10);
 	for (i=0; i<moves; i++){
@@ -727,7 +755,6 @@ RubikCube.prototype.shuffle = function(){
 		}else if (move === 12){
 			this.rotateRed(true);
 		}
-	
 	}
 }
 
@@ -762,5 +789,3 @@ RubikCube.prototype.fitnessMeasureSide = function(side){
 		score += 1;
 	return score;
 }
-
-

@@ -2,10 +2,13 @@
 <head>
 	<script type="text/javascript" src="rubiks.js?v=1.2"></script>
 	<script type="text/javascript" src="rubiksTest.js?v=1.2"></script>
+	<script type="text/javascript" src="rubiksSolver.js?v=1.2"></script>
 	<script type="text/javascript">
 		function start(){
-			cube = new RubikCubeTest();
-			console.log(cube.runAll());
+			//cube = new RubikCubeTest();
+			//console.log(cube.runAll());
+			rcs = new RubikCubeSolver(false);
+			
 		}
 	</script>
 <body onload="javascript:start()">
