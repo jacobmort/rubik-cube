@@ -79,7 +79,7 @@ RubikCubeTest.prototype.rotateOrangeTest = function(){
 		['o7','o8','o9']
     ];
     
-    cube.rotateOrange(false);
+    cube.rotateOrange();
     
     return (cube.orange_face[0][0]===f_solution[0][0])
 	&& (cube.orange_face[0][1]===f_solution[0][1])
@@ -190,7 +190,7 @@ RubikCubeTest.prototype.rotateOrangeInvertTest = function(){
 		['o7','o8','o9']
     ];
     
-    cube.rotateOrange(true);
+    cube.rotateOrangeInverse();
 	
     return (cube.orange_face[0][0]===f_solution[0][0])
 	&& (cube.orange_face[0][1]===f_solution[0][1])
@@ -301,7 +301,7 @@ RubikCubeTest.prototype.rotateBlueTest = function(){
 		['b7','b8','b9']
     ];
     
-    cube.rotateBlue(false);
+    cube.rotateBlue();
     //console.log(cube.orange_face);
     return (cube.orange_face[0][0]===f_solution[0][0])
 	&& (cube.orange_face[0][1]===f_solution[0][1])
@@ -412,7 +412,7 @@ RubikCubeTest.prototype.rotateBlueInverseTest = function(){
 		['b7','b8','b9']
     ];
     
-    cube.rotateBlue(true);
+    cube.rotateBlueInverse();
     //console.log(cube.orange_face);
     return (cube.orange_face[0][0]===f_solution[0][0])
 	&& (cube.orange_face[0][1]===f_solution[0][1])
@@ -524,7 +524,7 @@ RubikCubeTest.prototype.rotateGreenTest = function(){
 		['b9','b6','b3']
     ];
     
-    cube.rotateGreen(false);
+    cube.rotateGreen();
 	
     return (cube.orange_face[0][0]===f_solution[0][0])
 	&& (cube.orange_face[0][1]===f_solution[0][1])
@@ -636,7 +636,7 @@ RubikCubeTest.prototype.rotateGreenInverseTest = function(){
 		['b1','b4','b7']
     ];
     
-    cube.rotateGreen(true);
+    cube.rotateGreenInverse();
 	
     return (cube.orange_face[0][0]===f_solution[0][0])
 	&& (cube.orange_face[0][1]===f_solution[0][1])
@@ -747,7 +747,7 @@ RubikCubeTest.prototype.rotateYellowTest = function(){
 		['f7','b8','b9']
     ];
     
-    cube.rotateYellow(false);
+    cube.rotateYellow();
 	
     return (cube.orange_face[0][0]===f_solution[0][0])
 	&& (cube.orange_face[0][1]===f_solution[0][1])
@@ -861,7 +861,7 @@ RubikCubeTest.prototype.rotateYellowInverseTest = function(){
 		['o3','b8','b9']
     ];
     
-    cube.rotateYellow(true);
+    cube.rotateYellowInverse();
 	
     return (cube.orange_face[0][0]===f_solution[0][0])
 	&& (cube.orange_face[0][1]===f_solution[0][1])
@@ -972,7 +972,7 @@ RubikCubeTest.prototype.rotateWhiteTest = function(){
 		['b7','b8','o7']
     ];
     
-    cube.rotateWhite(false);
+    cube.rotateWhite();
 	
     return (cube.orange_face[0][0]===f_solution[0][0])
 	&& (cube.orange_face[0][1]===f_solution[0][1])
@@ -1087,7 +1087,7 @@ RubikCubeTest.prototype.rotateWhiteInverseTest = function(){
 		['b7','b8','f9']
     ];
     
-    cube.rotateWhite(true);
+    cube.rotateWhiteInverse();
 
     return (cube.orange_face[0][0]===f_solution[0][0])
 	&& (cube.orange_face[0][1]===f_solution[0][1])
@@ -1200,7 +1200,7 @@ RubikCubeTest.prototype.rotateRedTest = function(){
 		['o9','o6','o3']
     ];
     
-    cube.rotateRed(false);
+    cube.rotateRed();
     
     return (cube.orange_face[0][0]===f_solution[0][0])
 	&& (cube.orange_face[0][1]===f_solution[0][1])
@@ -1310,7 +1310,7 @@ RubikCubeTest.prototype.rotateRedInverseTest = function(){
 		['o1','o4','o7']
     ];
     
-    cube.rotateRed(true);
+    cube.rotateRedInverse();
     
     return (cube.orange_face[0][0]===f_solution[0][0])
 	&& (cube.orange_face[0][1]===f_solution[0][1])

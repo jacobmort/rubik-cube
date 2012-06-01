@@ -8,7 +8,10 @@
 			//cube = new RubikCubeTest();
 			//console.log(cube.runAll());
 			rcs = new RubikCubeSolver(false);
-			
+			rcs.genMoves(20);
+			rcs.applyMoves();
+			rcs.calcRoundWinners();
+			//rcs.nextRound();
 		}
 	</script>
 <body onload="javascript:start()">

@@ -44,7 +44,7 @@ RubikCube = function(){
 	}
 };
 
-RubikCube.prototype.rotateOrange = function(inverse){
+RubikCube.prototype.rotateOrangeBase = function(inverse){
 	if (!inverse){
 		var old_orange = Array();
 		var old_blue = Array();
@@ -155,10 +155,13 @@ RubikCube.prototype.rotateOrange = function(inverse){
 	}
 }
 RubikCube.prototype.rotateOrangeInverse = function(){
-	this.rotateOrange(true);
+	this.rotateOrangeBase(true);
+}
+RubikCube.prototype.rotateOrange = function(){
+	this.rotateOrangeBase(false);
 }
 
-RubikCube.prototype.rotateBlue = function(inverse){
+RubikCube.prototype.rotateBlueBase = function(inverse){
 	if (!inverse){
 		var old_orange = Array();
 		var old_blue = Array();
@@ -269,10 +272,13 @@ RubikCube.prototype.rotateBlue = function(inverse){
 	}
 }
 RubikCube.prototype.rotateBlueInverse = function(){
-	this.rotateBlue(true);
+	this.rotateBlueBase(true);
+}
+RubikCube.prototype.rotateBlue = function(){
+	this.rotateBlueBase(false);
 }
 
-RubikCube.prototype.rotateGreen = function(inverse){
+RubikCube.prototype.rotateGreenBase = function(inverse){
 	if (!inverse){
 		var old_orange = Array();
 		var old_green = Array();
@@ -383,9 +389,12 @@ RubikCube.prototype.rotateGreen = function(inverse){
 	}
 }
 RubikCube.prototype.rotateGreenInverse = function(){
-	this.rotateGreen(true);
+	this.rotateGreenBase(true);
 }
-RubikCube.prototype.rotateYellow = function(inverse){
+RubikCube.prototype.rotateGreen = function(){
+	this.rotateGreenBase(false);
+}
+RubikCube.prototype.rotateYellowBase = function(inverse){
 	if (!inverse){
 		var old_orange = Array();
 		var old_green = Array();
@@ -496,10 +505,13 @@ RubikCube.prototype.rotateYellow = function(inverse){
 	}
 }
 RubikCube.prototype.rotateYellowInverse = function(){
-	this.rotateYellow(true);
+	this.rotateYellowBase(true);
+}
+RubikCube.prototype.rotateYellow = function(){
+	this.rotateYellowBase(false);
 }
 
-RubikCube.prototype.rotateWhite = function(inverse){
+RubikCube.prototype.rotateWhiteBase = function(inverse){
 	if (!inverse){
 		var old_orange = Array();
 		var old_green = Array();
@@ -610,10 +622,13 @@ RubikCube.prototype.rotateWhite = function(inverse){
 	}
 }
 RubikCube.prototype.rotateWhiteInverse = function(){
-	this.rotateWhite(true);
+	this.rotateWhiteBase(true);
+}
+RubikCube.prototype.rotateWhite = function(){
+	this.rotateWhiteBase(false);
 }
 
-RubikCube.prototype.rotateRed = function(inverse){
+RubikCube.prototype.rotateRedBase = function(inverse){
 	if (!inverse){
 		var old_opposite = Array();
 		var old_blue = Array();
@@ -724,7 +739,10 @@ RubikCube.prototype.rotateRed = function(inverse){
 	}
 }
 RubikCube.prototype.rotateRedInverse = function(){
-	this.rotateRed(true);
+	this.rotateRedBase(true);
+}
+RubikCube.prototype.rotateRed = function(){
+	this.rotateRedBase(false);
 }
 RubikCube.prototype.shuffle = function(){
 	moves = Math.floor((Math.random()*10)+10);
