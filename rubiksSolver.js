@@ -22,6 +22,9 @@ RubikCubeSolver = function(fromStorage){
 	this.next_moves = [];
 	this.total_gen_moves = [];
 	this.total_gen_scores = [];
+	this.total_gen_scores.push(this.base_score);
+	this.total_cubes = [];
+	this.total_cubes.push(this.cube);
 	/*
 		how it works:
 		generate X number of moves to lastgen_moves
@@ -102,14 +105,19 @@ RubikCubeSolver.prototype.genMoves = function(num_moves){
 
 RubikCubeSolver.prototype.calcRoundWinners = function(){
 	var best_score = 0.0;
+	var best_score_loc = 0;
+	console.log("start calcRoundWinners");
 	for (var i=0; i<20; i++){
 		if (this.lastgen_scores[i] > best_score){
 			best_score = this.lastgen_scores[i];
-			this.next_moves.push(this.lastgen_moves[i]);
-			break;
+			best_score_loc = i;
 		}
 	}
-	console.log('high score:'+best_score);
+	console.log('high score:'+best_score+' located at:'+best_score_loc);
+	for (var i=0; i<=best_score_loc; i++){
+		this.next_moves.push(this.lastgen_moves[i]);
+	}
+	
 	console.log(this.next_moves.length);
 	if (best_score === 0.0){
 		alert('no winners this round');
