@@ -778,32 +778,36 @@ RubikCube.prototype.shuffle = function(){
 
 RubikCube.prototype.fitnessMeasure = function(){
 	var fitness_score = 0;
-	fitness_score = fitness_score + this.fitnessMeasureSide(this.orange_face);
-	fitness_score = fitness_score + this.fitnessMeasureSide(this.blue_face);
-	fitness_score = fitness_score + this.fitnessMeasureSide(this.green_face);
-	fitness_score = fitness_score + this.fitnessMeasureSide(this.white_face);
-	fitness_score = fitness_score + this.fitnessMeasureSide(this.yellow_face);
-	fitness_score = fitness_score + this.fitnessMeasureSide(this.red_face);
+	fitness_score = fitness_score + this.fitnessMeasureSide(this.orange_face,this.green_face,this.blue_face,this.white_face,this.yellow_face);
+	fitness_score = fitness_score + this.fitnessMeasureSide(this.blue_face,this.orange_face,this.red_face,this.white_face,this.red_face);
+	fitness_score = fitness_score + this.fitnessMeasureSide(this.green_face,this.orange_face,this.red_face,this.yellow_face,this.white_face);
+	fitness_score = fitness_score + this.fitnessMeasureSide(this.white_face,this.orange_face,this.red_face,this.green_face,this.blue_face);
+	fitness_score = fitness_score + this.fitnessMeasureSide(this.yellow_face,this.orange_face,this.red_face,this.blue_face,this.green_face);
+	fitness_score = fitness_score + this.fitnessMeasureSide(this.red_face,this.green_face,this.blue_face,this.yellow_face,this.white_face);
 	return fitness_score/this.total_fitness_points;
 }
-RubikCube.prototype.fitnessMeasureSide = function(side){
+RubikCube.prototype.fitnessMeasureSide = function(side, top, bottom, left, right){
 	var score = 0;
 	var color = side[1][1];
-	if (side[0][0] === color)
+	var color_top = top[1][1];
+	var color_bottom = bottom[1][1];
+	var color_left = left[1][1];
+	var color_right = right[1][1];
+	if (side[0][0] === color && top[2][0] === color_top && left[0][2] === color_left)
 		score += 1;
-	if (side[0][1] === color)
+	if (side[0][1] === color && top[2][1] === color_top)
 		score += 1;
-	if (side[0][2] === color)
+	if (side[0][2] === color && top[2][2] === color_top && right[0][0] === color_right)
 		score += 1;
-	if (side[1][0] === color)
+	if (side[1][0] === color && left[1][2] == color_left)
 		score += 1;
-	if (side[1][2] === color)
+	if (side[1][2] === color && right[1][0] === color_right)
 		score += 1;
-	if (side[2][0] === color)
+	if (side[2][0] === color && bottom[0][0] == color_bottom && left[2][2] === color_left)
 		score += 1;
-	if (side[2][1] === color)
+	if (side[2][1] === color && bottom[0][1] === color_bottom)
 		score += 1;
-	if (side[2][2] === color)
+	if (side[2][2] === color && bottom[0][2] === color_bottom && right[2][0] === color_right)
 		score += 1;
 	return score;
 }
